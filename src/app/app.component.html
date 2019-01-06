@@ -8,14 +8,43 @@
 <h2>Here are some links to help you start: </h2>
 <ul>
   <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+    <b>{{mUsername}} and {{mPassword}} fontSize:{{mFontSize}}</b>
   </li>
   <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
+    <span [innerHtml]="mUsername" [style.color]="mColor" [style.font-size]='mFontSize'></span>
   </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
+  
 </ul>
+<div>
+  <span>Two way binding</span>
+  <input type="text" [(ngModel)]='myMsg' placeholder="Enter your message" />
+  <p>Your message will be show here:<span style="color:red">{{myMsg}}</span></p>
+  <button (click)="onClickReset()">Reset</button>
+  <br>  <br>
+  <input type="text" [(ngModel)]='mEmail' placeholder="Enter your message" />
+  <p>Your message will be show here:<span style="color:red">{{mEmail}}</span></p>
+
+
+  <br>  <br>
+  <button (click)="onClick()" (mousemove)="onClick()">Click</button>
+  <button (click)="onClickMe($event)">Click Single</button>
+  <button (dblclick)="onClickMe($event)">Click Double</button>
+  <span (mouseover)="onMouseOver()" (mouseout)="onMouseOut()" [style.color]='mSpanColor'>Mouse Over
+  </span><br>
+  <input #input1 type="text" (keyup)="onKeyUp(input1.value)" placeholder="Check result from console">
+  <input #input2 type="text" (keyup)="onKeyUpVerify(input2.value)" placeholder="Enter code">
+  
+  
+  <h2>Is your wife nagging</h2>
+  <h3>Yes:{{agreed}}, No: {{disagreed}}</h3>
+  
+  
+  <voter-component *ngFor="let voter of voters"
+  [name]='voter'
+  (onVoted)="onVoted($event)">
+</voter-component>
+
+
+</div>
 
 <router-outlet></router-outlet>
